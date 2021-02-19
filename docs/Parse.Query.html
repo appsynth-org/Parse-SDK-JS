@@ -53,6 +53,7 @@ most common use case is finding all objects that match a query through the
 <code>find</code> method. for example, this sample code fetches all objects
 of class <code>myclass</code>. it calls a different function depending on
 whether the fetch succeeded or not.
+
 <pre>
 var query = new parse.query(myclass);
 query.find({
@@ -64,10 +65,12 @@ query.find({
     // error is an instance of parse.error.
   }
 });</pre></p>
+
 <p>a parse.query can also be used to retrieve a single object whose id is
 known, through the get method. for example, this sample code fetches an
 object of class <code>myclass</code> and id <code>myid</code>. it calls a
 different function depending on whether the fetch succeeded or not.
+
 <pre>
 var query = new parse.query(myclass);
 query.get(myid, {
@@ -79,6 +82,7 @@ query.get(myid, {
     // error is an instance of parse.error.
   }
 });</pre></p>
+
 <p>a parse.query can also be used to count the number of objects that match
 the query without retrieving all of those objects. for example, this
 sample code counts the number of objects of the class <code>myclass</code>
@@ -88,10 +92,11 @@ query.count({
   success: function(number) {
     // there are number instances of myclass.
   },
-<p>error: function(error) {
-// error is an instance of Parse.Error.
-}
-});</pre></p></p></div>
+
+  error: function(error) {
+    // error is an instance of Parse.Error.
+  }
+});</pre></p></div>
         
     
 </header>
@@ -112,55 +117,6 @@ query.count({
 
 
 
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>className</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-        
-
-    
-    </tbody>
-</table>
 
 
 
@@ -439,6 +395,7 @@ Internally calling Parse.Query.withJSON</p>
     <p>Constructs a Parse.Query that is the OR of the passed in queries.  For
 example:</p>
 <pre>var compoundQuery = Parse.Query.or(query1, query2, query3);</pre>
+
 <p>will create a compoundQuery that is an or of the query1, query2, and
 query3.</p>
 </div>
@@ -1285,12 +1242,12 @@ string of comma separated values, or an Array of keys, or multiple keys.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the count completes successfully.
   <li>error: Function to call when the find fails.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -2156,14 +2113,14 @@ completes.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the count completes successfully.
   <li>error: Function to call when the find fails.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -2508,12 +2465,12 @@ string of comma separated values, or an Array of keys, or multiple keys.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the count completes successfully.
   <li>error: Function to call when the find fails.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -2825,7 +2782,7 @@ an object returned by a different Parse.Query.</p>
 
             <td class="description last">
                 <p>The key that contains the value that is being
-excluded.</p>
+                    excluded.</p>
                 
             </td>
         </tr>
@@ -2852,7 +2809,7 @@ excluded.</p>
 
             <td class="description last">
                 <p>The key in the objects returned by the query to
-match against.</p>
+                         match against.</p>
                 
             </td>
         </tr>
@@ -3035,7 +2992,7 @@ Parse.Query constraint.</p>
 
             <td class="description last">
                 <p>The key that the contains the object to match the
-query.</p>
+                    query.</p>
                 
             </td>
         </tr>
@@ -3222,7 +3179,7 @@ and may not use limit or skip.</p>
 
             <td class="description last">
                 <p>Callback that will be called with each result
-of the query.</p>
+    of the query.</p>
                 
             </td>
         </tr>
@@ -3249,14 +3206,14 @@ of the query.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the iteration completes successfully.
   <li>error: Function to call when the iteration fails.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -3298,7 +3255,7 @@ are:<ul></p>
 
 <div class="param-desc">
     <p>A promise that will be fulfilled once the
-iteration has completed.</p>
+    iteration has completed.</p>
 </div>
 
     
@@ -3929,14 +3886,14 @@ completes.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the find completes successfully.
   <li>error: Function to call when the find fails.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -4095,14 +4052,14 @@ success is passed the object if there is one. otherwise, undefined.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object. Valid options
-are:<ul></p>
+are:<ul>
   <li>success: Function to call when the find completes successfully.
   <li>error: Function to call when the find fails.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -4168,16 +4125,16 @@ the query completes.</p>
 <div class="description">
     <p>Adds a constraint for finding string values that contain a provided
 string. This may be slow for large datasets. Requires Parse-Server &gt; 2.5.0</p>
-<p>In order to sort you must use select and ascending ($score is required)</p>
+<p>In order to sort you must use select and ascending ($score is required)
  <pre>
   query.fullText('term');
   query.ascending('$score');
   query.select('$score');
- </pre>
-<p>To retrieve the weight / rank</p>
+ </pre></p>
+<p>To retrieve the weight / rank
  <pre>
-  object->get('score');
- </pre>
+  object-&gt;get('score');
+ </pre></p>
 </div>
 
 
@@ -4479,14 +4436,14 @@ find completes.</p>
 
             <td class="description last">
                 <p>A Backbone-style options object.
-Valid options are:<ul></p>
+Valid options are:<ul>
   <li>success: A Backbone-style success callback
   <li>error: An Backbone-style error callback.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -5847,7 +5804,7 @@ an object returned by a different Parse.Query.</p>
 
             <td class="description last">
                 <p>The key that contains the value that is being
-matched.</p>
+                    matched.</p>
                 
             </td>
         </tr>
@@ -5874,7 +5831,7 @@ matched.</p>
 
             <td class="description last">
                 <p>The key in the objects returned by the query to
-match against.</p>
+                         match against.</p>
                 
             </td>
         </tr>
@@ -6057,7 +6014,7 @@ constraint.</p>
 
             <td class="description last">
                 <p>The key that the contains the object to match the
-query.</p>
+                    query.</p>
                 
             </td>
         </tr>
@@ -7941,7 +7898,7 @@ Radius of earth used is 6371.0 kilometers.</p>
 
             <td class="description last">
                 <p>Maximum distance (in kilometers) of results
-to return.</p>
+    to return.</p>
                 
             </td>
         </tr>
@@ -8151,7 +8108,7 @@ Radius of earth used is 3958.8 miles.</p>
 
             <td class="description last">
                 <p>Maximum distance (in miles) of results to
-return.</p>
+    return.</p>
                 
             </td>
         </tr>
@@ -8544,7 +8501,7 @@ values near the point given and within the maximum distance given.</p>
 
             <td class="description last">
                 <p>Maximum distance (in radians) of results to
-return.</p>
+  return.</p>
                 
             </td>
         </tr>
@@ -8780,7 +8737,7 @@ query.skip(100).find().then(...);</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Feb 19 2021 16:08:16 GMT+0700 (Indochina Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 06 2018 18:15:12 GMT+0000 (UTC) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

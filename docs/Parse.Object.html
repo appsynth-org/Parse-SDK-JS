@@ -51,12 +51,13 @@
 <p>You won't normally call this method directly.  It is recommended that
 you use a subclass of <code>Parse.Object</code> instead, created by calling
 <code>extend</code>.</p>
+
 <p>However, if you don't want to use a subclass, or aren't sure which
 subclass is appropriate, you can use this form:<pre>
-    var object = new Parse.Object("ClassName");
+    var object = new Parse.Object(&quot;ClassName&quot;);
 </pre>
 That is basically equivalent to:<pre>
-    var MyClass = Parse.Object.extend("ClassName");
+    var MyClass = Parse.Object.extend(&quot;ClassName&quot;);
     var object = new MyClass();
 </pre></p></div>
         
@@ -655,11 +656,11 @@ That is basically equivalent to:<pre>
 <div class="description">
     <p>Creates a reference to a subclass of Parse.Object with the given id. This
 does not exist on Parse.Object, only on subclasses.</p>
-<p>A shortcut for: <pre>
- var Foo = Parse.Object.extend("Foo");
+<p><p>A shortcut for: <pre>
+ var Foo = Parse.Object.extend(&quot;Foo&quot;);
  var pointerToFoo = new Foo();
- pointerToFoo.id = "myObjectId";
-</pre>
+ pointerToFoo.id = &quot;myObjectId&quot;;
+</pre></p>
 </div>
 
 
@@ -815,20 +816,21 @@ does not exist on Parse.Object, only on subclasses.</p>
 
 <div class="description">
     <p>Destroy the given list of models on the server if it was already persisted.</p>
-<p>Unlike saveAll, if an error occurs while deleting an individual model,
+<p><p>Unlike saveAll, if an error occurs while deleting an individual model,
 this method will continue trying to delete the rest of the models if
-possible, except in the case of a fatal error like a connection error.
-<p>In particular, the Parse.Error object returned in the case of error may
-be one of two types:
+possible, except in the case of a fatal error like a connection error.</p>
+<p><p>In particular, the Parse.Error object returned in the case of error may
+be one of two types:</p>
 <ul>
-  <li>A Parse.Error.AGGREGATE_ERROR. This object's "errors" property is an
+  <li>A Parse.Error.AGGREGATE_ERROR. This object's &quot;errors&quot; property is an
       array of other Parse.Error objects. Each error object in this array
-      has an "object" property that references the object that could not be
+      has an &quot;object&quot; property that references the object that could not be
       deleted (for instance, because that object could not be found).</li>
   <li>A non-aggregate Parse.Error. This indicates a serious error that
       caused the delete operation to be aborted partway through (for
       instance, a connection failure in the middle of the delete).</li>
 </ul>
+
 <pre>
   Parse.Object.destroyAll([object1, object2, ...], {
     success: function() {
@@ -1009,7 +1011,7 @@ be one of two types:
 
 <div class="param-desc">
     <p>A promise that is fulfilled when the destroyAll
-completes.</p>
+    completes.</p>
 </div>
 
     
@@ -1198,8 +1200,9 @@ security issues.</p>
 previous extension of that class. When a Parse.Object is automatically
 created by parsing JSON, it will use the most recent extension of that
 class.</p>
+
 <p>You should call either:<pre>
-    var MyClass = Parse.Object.extend("MyClass", {
+    var MyClass = Parse.Object.extend(&quot;MyClass&quot;, {
         <i>Instance methods</i>,
         initialize: function(attrs, options) {
             this.someInstanceProperty = [],
@@ -1210,7 +1213,7 @@ class.</p>
     });</pre>
 or, for Backbone compatibility:<pre>
     var MyClass = Parse.Object.extend({
-        className: "MyClass",
+        className: &quot;MyClass&quot;,
         <i>Instance methods</i>,
         initialize: function(attrs, options) {
             this.someInstanceProperty = [],
@@ -1337,7 +1340,7 @@ or, for Backbone compatibility:<pre>
 
             <td class="description last">
                 <p>Instance properties to add to instances of the
-class returned from this method.</p>
+    class returned from this method.</p>
                 
             </td>
         </tr>
@@ -1364,7 +1367,7 @@ class returned from this method.</p>
 
             <td class="description last">
                 <p>Class properties to add the class returned from
-this method.</p>
+    this method.</p>
                 
             </td>
         </tr>
@@ -1880,7 +1883,7 @@ If any error is encountered, stops and calls the error handler.</p>
 
             <td class="description last">
                 <p>In single instance mode, all old server data
-is overwritten if this is set to true</p>
+  is overwritten if this is set to true</p>
                 
             </td>
         </tr>
@@ -3365,14 +3368,14 @@ before removal.</p>
 
             <td class="description last">
                 <p>A Backbone-style callback object.
-Valid options are:<ul></p>
+Valid options are:<ul>
   <li>success: A Backbone-style success callback
   <li>error: An Backbone-style error callback.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -3414,7 +3417,7 @@ Valid options are:<ul></p>
 
 <div class="param-desc">
     <p>A promise that is fulfilled when the destroy
-completes.</p>
+    completes.</p>
 </div>
 
     
@@ -4164,14 +4167,14 @@ model differs from its current attributes, they will be overriden.</p>
 
             <td class="description last">
                 <p>A Backbone-style callback object.
-Valid options are:<ul></p>
+Valid options are:<ul>
   <li>success: A Backbone-style success callback.
   <li>error: An Backbone-style error callback.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -4213,7 +4216,7 @@ Valid options are:<ul></p>
 
 <div class="param-desc">
     <p>A promise that is fulfilled when the fetch
-completes.</p>
+    completes.</p>
 </div>
 
     
@@ -5853,34 +5856,34 @@ with a given key.</p>
     <p>Set a hash of model attributes, and save the model to the server.
 updatedAt will be updated when the request returns.
 You can either call it as:<pre>
-object.save();</pre>
+  object.save();</pre>
 or<pre>
-object.save(null, options);</pre>
+  object.save(null, options);</pre>
 or<pre>
-object.save(attrs, options);</pre>
+  object.save(attrs, options);</pre>
 or<pre>
-object.save(key, value, options);</pre></p>
+  object.save(key, value, options);</pre></p>
 <p>For example, <pre>
-gameTurn.save({
-player: &quot;Jake Cutter&quot;,
-diceRoll: 2
-}, {
-success: function(gameTurnAgain) {
-// The save was successful.
-},
-error: function(gameTurnAgain, error) {
-// The save failed.  Error is an instance of Parse.Error.
-}
-});</pre>
+  gameTurn.save({
+    player: &quot;Jake Cutter&quot;,
+    diceRoll: 2
+  }, {
+    success: function(gameTurnAgain) {
+      // The save was successful.
+    },
+    error: function(gameTurnAgain, error) {
+      // The save failed.  Error is an instance of Parse.Error.
+    }
+  });</pre>
 or with promises:<pre>
-gameTurn.save({
-player: &quot;Jake Cutter&quot;,
-diceRoll: 2
-}).then(function(gameTurnAgain) {
-// The save was successful.
-}, function(error) {
-// The save failed.  Error is an instance of Parse.Error.
-});</pre></p>
+  gameTurn.save({
+    player: &quot;Jake Cutter&quot;,
+    diceRoll: 2
+  }).then(function(gameTurnAgain) {
+    // The save was successful.
+  }, function(error) {
+    // The save failed.  Error is an instance of Parse.Error.
+  });</pre></p>
 </div>
 
 
@@ -5973,14 +5976,14 @@ diceRoll: 2
 
             <td class="description last">
                 <p>A Backbone-style callback object.
-Valid options are:<ul></p>
+Valid options are:<ul>
   <li>success: A Backbone-style success callback.
   <li>error: An Backbone-style error callback.
   <li>useMasterKey: In Cloud Code and Node only, causes the Master Key to
     be used for this request.
   <li>sessionToken: A valid session token, used for making a request on
       behalf of a specific user.
-</ul>
+</ul></p>
                 
             </td>
         </tr>
@@ -6022,7 +6025,7 @@ Valid options are:<ul></p>
 
 <div class="param-desc">
     <p>A promise that is fulfilled when the save
-completes.</p>
+    completes.</p>
 </div>
 
     
@@ -6055,12 +6058,14 @@ key and value.  For example:<pre>
       // The set failed validation.
     }
   });
-<p>game.set(&quot;currentPlayer&quot;, player2, {
-error: function(gameTurnAgain, error) {
-// The set failed validation.
-}
-});</p>
-<p>game.set(&quot;finished&quot;, true);</pre></p></p>
+
+  game.set(&quot;currentPlayer&quot;, player2, {
+    error: function(gameTurnAgain, error) {
+      // The set failed validation.
+    }
+  });
+
+  game.set(&quot;finished&quot;, true);</pre></p>
 </div>
 
 
@@ -6200,7 +6205,7 @@ error: function(gameTurnAgain, error) {
 
             <td class="description last">
                 <p>A set of options for the set.
-The only supported option is <code>error</code>.</p>
+    The only supported option is <code>error</code>.</p>
                 
             </td>
         </tr>
@@ -6389,7 +6394,7 @@ The only supported option is <code>error</code>.</p>
 
             <td class="description last">
                 <p>Optional Backbone-like options object to be
-passed in to set.</p>
+    passed in to set.</p>
                 
             </td>
         </tr>
@@ -6939,7 +6944,7 @@ to provide additional validation on <code>set</code> and
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Feb 19 2021 16:08:15 GMT+0700 (Indochina Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 06 2018 18:15:12 GMT+0000 (UTC) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
